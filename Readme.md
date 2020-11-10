@@ -11,6 +11,17 @@ For example, you have a large dataset of people who like ice cream and another l
 
 In many cases this can be faster and more performant than SQL.  It's also possible to serialize the Bitsets so that they don't have to be created everytime. 
 
+# Applications
+
+* Data Analysis - filtering, counting of large number of IDs, 64-bit ids
+* Facet Search - filtering a set of data by multiple properties
+
+# Nuget
+
+```
+> Install-Package SparseBitsets
+```
+
 # Usage
 
 SparseBitsets are initially stored in a temporary dictionary to speed up insertion.  After adding the bits / values, call `Pack()` on the bitset to make the bitsets ready for processing.
