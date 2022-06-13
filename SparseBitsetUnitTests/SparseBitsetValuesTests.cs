@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-using System.Linq;
 using NUnit.Framework;
 using SparseBitsets;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SparseBitsetUnitTests
 {
@@ -75,7 +75,7 @@ namespace SparseBitsetUnitTests
             var breakdown = _overallBitset.Or(valuesToCompare.ToOptimizedBitset());
             return breakdown.GetPopCount();
         }
-        
+
         [TestCase(new ulong[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, new ulong[] { 1, 2, 3, 4, 5, 6, 7 }, ExpectedResult = new ulong[] { 1, 2, 3, 4, 5, 6, 7 })]
         [TestCase(new ulong[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, new ulong[] { 5, 6, 7, 8, 9, 10 }, ExpectedResult = new ulong[] { 5, 6, 7, 8, 9, 10 })]
         [TestCase(new ulong[] { 5, 6, 7, 8, 9, 10, 11, 12 }, new ulong[] { 1, 2, 3, 4, 5, 6, 7, 8 }, ExpectedResult = new ulong[] { 5, 6, 7, 8 })]
@@ -162,6 +162,41 @@ namespace SparseBitsetUnitTests
                 .AndNot(notPopulation.ToOptimizedBitset(), fullBitset);
 
             return bitSet.GetPopCount();
+        }
+
+        [Test]
+        public void RemoveMembers_ShouldBe_True()
+        {
+            var bitValues = Enumerable.Range(1, 250);
+            var bitset = new SparseBitset();
+
+            foreach (var bitValue in bitValues)
+            {
+                bitset.Add((ulong)bitValue);
+            }
+            bitset.Pack();
+
+            bitset.Unpack();
+            bitset.Remove(260);
+            bitset.Remove(100);
+            bitset.Pack();
+
+            Assert.AreEqual(249, bitset.GetPopCount());
+        }
+
+        [Test]
+        public void Pack_Unpack_Runs_ShouldBe_True()
+        {
+            var bitset = new SparseBitset();
+
+            bitset.Add(25);
+            bitset.Add(64);
+            bitset.Add(192);
+            bitset.Pack();
+
+            bitset.Unpack();
+
+            Assert.AreEqual(3, bitset.GetPopCount());
         }
     }
 }
