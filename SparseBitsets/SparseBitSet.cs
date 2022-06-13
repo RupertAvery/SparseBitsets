@@ -41,11 +41,7 @@ namespace SparseBitsets
         {
             long key = (long)(bit / 64);
             var bitPosition = bit % 64;
-            if (!_bitFields.TryGetValue(key, out ulong value))
-            {
-                _bitFields.Add(key, ((ulong)1 << (int)bitPosition));
-            }
-            else
+            if (_bitFields.TryGetValue(key, out ulong value))
             {
                 var updatedValue = value & ~((ulong)1 << (int)bitPosition);
                 if (updatedValue == 0)
@@ -104,7 +100,7 @@ namespace SparseBitsets
             {
                 for (var i = 0; i < run.End - run.Start + 1; i++)
                 {
-                    _bitFields.Add(i, run.Values[i]);
+                    _bitFields.Add(run.Start + i, run.Values[i]);
                 }
             }
         }
