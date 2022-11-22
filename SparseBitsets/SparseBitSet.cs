@@ -22,6 +22,21 @@ namespace SparseBitsets
             Runs = runs.ToList();
         }
 
+        public SparseBitset(IEnumerable<int> values)
+        {
+            foreach (var value in values)
+            {
+                Add((ulong)value);
+            }
+        }
+        public SparseBitset(IEnumerable<ulong> values)
+        {
+            foreach (var value in values)
+            {
+                Add(value);
+            }
+        }
+
         public void Add(ulong bit)
         {
             long key = (long)(bit / 64);
@@ -370,6 +385,11 @@ namespace SparseBitsets
             //    }
             //}
         }
+
+        public static SparseBitset operator |(SparseBitset a, SparseBitset b) => a.Or(b);
+
+        public static SparseBitset operator &(SparseBitset a, SparseBitset b) => a.And(b);
+
     }
 
 }
