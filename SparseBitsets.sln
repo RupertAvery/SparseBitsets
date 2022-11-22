@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30621.155
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparseBitsets", "SparseBitsets\SparseBitsets.csproj", "{0A531AE7-D2BB-4FFF-BB13-2F6450B04851}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SparseBitsets", "SparseBitsets\SparseBitsets.csproj", "{0A531AE7-D2BB-4FFF-BB13-2F6450B04851}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparseBitsetUnitTests", "SparseBitsetUnitTests\SparseBitsetUnitTests.csproj", "{176D6978-BA97-4EED-9589-CA88C0005843}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SparseBitsetUnitTests", "SparseBitsetUnitTests\SparseBitsetUnitTests.csproj", "{176D6978-BA97-4EED-9589-CA88C0005843}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmarks", "Benchmarks\Benchmarks.csproj", "{08DEDD28-8AD6-4399-BCF5-60BA94A6F630}"
 EndProject
